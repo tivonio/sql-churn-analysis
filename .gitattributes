@@ -1,10 +1,3 @@
-# Exclude big “scratch / exploration” notebooks from language stats
-notebooks/*scratch*.ipynb linguist-documentation
-notebooks/*explore*.ipynb linguist-documentation
-
-# Keep the main notebook counted (rename it to match this pattern)
-notebooks/01_visuals.ipynb linguist-detectable
-
-# Make sure SQL is counted
-sql/** linguist-detectable
+notebooks/** linguist-documentation
+notebooks/01_visuals.ipynb -linguist-documentation linguist-detectable
 *.sql linguist-detectable
