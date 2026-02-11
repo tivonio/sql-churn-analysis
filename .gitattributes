@@ -1,4 +1,10 @@
-# Auto detect text files and perform LF normalization
-* text=auto
-notebooks/** linguist-documentation
-*.sql linguist-language=SQL
+# Exclude big “scratch / exploration” notebooks from language stats
+notebooks/*scratch*.ipynb linguist-documentation
+notebooks/*explore*.ipynb linguist-documentation
+
+# Keep the main notebook counted (rename it to match this pattern)
+notebooks/01_visuals.ipynb linguist-detectable
+
+# Make sure SQL is counted
+sql/** linguist-detectable
+*.sql linguist-detectable
