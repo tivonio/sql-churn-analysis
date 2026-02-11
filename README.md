@@ -1,6 +1,6 @@
-# Why Fewer Customers Can Mean More Revenue (Three churn definitions)
+# We Lost Customers, But Not Revenue (Three churn definitions that explain the mismatch)
 
-This repo contains the complete SQL walkthrough for the blog post "Why Fewer Customers Can Mean More Revenue" (published on tivon.io).
+This repo contains the complete SQL walkthrough for the blog post ["We Lost Customers, But Not Revenue"](https://tivon.io/2026/02/15/we-lost-customers-but-not-revenue/) (published on tivon.io).
 
 It uses a public SaaS-style dataset (Ravenstack) to demonstrate a common analytics mismatch:
 
