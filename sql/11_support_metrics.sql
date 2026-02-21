@@ -3,6 +3,18 @@
 
 PURPOSE:
     -Create account-month support metrics that can be aligned to churn timing.
+
+Significance
+    - Explains churn risk by testing signals that appear before churn.
+    - Support burden is a common leading indicator and is easy to quantify.
+
+Output
+    - v_support_account_month (one row per account per month)
+
+Notes
+    - tickets_closed = closed_at IS NOT NULL.
+    - avg_resolution_hours uses resolution_time_hours.
+    - high_priority_tickets counts priority in ('high', 'urgent')
 */
 
 SET search_path = ravenstack;
