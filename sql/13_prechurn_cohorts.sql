@@ -6,7 +6,7 @@ PURPOSE:
     - Provide a pre-churn window that can be joined to support and usage metrics.
 
 Dependencies
-    - v_account_mrr_month
+    - Requires: v_account_mrr_month (03_account_mrr_month.sql)
 
 Output
     - v_account_month_cohorts (one row per account_id, month_start)
