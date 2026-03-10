@@ -147,8 +147,8 @@ If diffs are non-zero, stop and debug before interpreting churn.
 ### 1) Clone the repo
 
     cd $HOME
-    git clone https://github.com/tivonio/sql-churn-scoreboard.git
-    cd sql-churn-scoreboard
+    git clone https://github.com/tivonio/sql-churn-analysis.git
+    cd sql-churn-analysis
 
 ### 2) Start PostgreSQL with Docker Compose (recommended)
 
