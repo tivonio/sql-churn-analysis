@@ -10,7 +10,7 @@ PURPOSE:
 
 Significance
     - SQL 02 is the first trust check
-    - It catches any obvious dat issues before any analytical views are built.
+    - It catches any obvious data issues before any analytical views are built.
     - This file helps confirm that SQL 00-01 completed correctly.
 
 Dependencies

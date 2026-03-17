@@ -6,7 +6,7 @@ PURPOSE:
     - Populate the database so the analysis views can be built.
 
 Significance
-    - SQL 01 turns the emptry schema into a reproducible working dataset.
+    - SQL 01 turns the empty schema into a reproducible working dataset.
     - All analysis from SQL 02 onward assumes these tables are populated.
 
 Dependencies
