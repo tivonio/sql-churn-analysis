@@ -5,8 +5,14 @@ PURPOSE:
     - Label each account-month with churn timing based on the logo churn definition.
     - Provide a pre-churn window that can be joined to support and usage metrics.
 
+Significance
+    - SQL 13 converts a churn definition into a cohort sturcture that can be joined
+        to support and usage.
+    - This file is the anchor for all before churn analysis.
+
 Dependencies
-    - Requires: v_account_mrr_month (03_account_mrr_month.sql)
+    - Requires:
+        - v_account_mrr_month (03_account_mrr_month.sql)
 
 Output
     - v_account_month_cohorts (one row per account_id, month_start)
@@ -15,6 +21,8 @@ Notes
     - Churn definition:
         churn_month occurs when prev_mrr > 0 and mrr_amount = 0
     - Use the first churn month per account.
+    - pre_churn_3m means months_to_churn between 1 and 3.
+    - Months after churn are excluded so the cohort view stays focused on pre-churn behavior.
 */
 
 SET search_path = ravenstack;

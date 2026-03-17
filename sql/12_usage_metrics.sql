@@ -6,25 +6,26 @@ PURPOSE:
     - Test whether churned accounts show usage decine before they churn.
 
 significance
+    - SQL 12 provides the product usage side of the churn risk analysis.
     - Usage decline is often a leading indicator before churn.
     - Usage is rolled up to the same grain as the churn shanpshot: account-month.
 
 Dependencies
     - Requires:
-        - feature_usage_raw (usage is keyed by subscription_id)
-        - subscriptions (to map subscription_id tp account_id)
+        - feature_usage_raw (00_create_tables.sql, 01_load_data.sql)
+        - subscriptions (00_create_tables.sql, 01_load_data.sql)
 
 Output
     - v_usage_account_month (one row per account per month)
+
+Notes
+    - feature_usage_raw may contain duplicate usage_id values
+    - This is acceptable here because usage is aggregated to account-month.
 
 Definitions
     - total_usage_count: sum of usage_count across all events/features in the month
     - distinct_features_used: how many unique feature_name values were used in the month
     - active_flag: 1 if total_usage_count > 0 else 0
-
-Notes
-    - feature_usage_raw may contain duplicate usage_id values
-    - This is acceptable here because usage is aggregated to account-month.
 */
 
 SET search_path = ravenstack;

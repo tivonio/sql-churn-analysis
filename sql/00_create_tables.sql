@@ -5,6 +5,25 @@ PURPOSE:
     - Create the Ravenstack schema and base tables used in this project.
     - Reset the database to a clean state so the project is reproducible.
     - Define datatypes, primary keys, and foreign keys.
+
+Significance
+    - SQL 00 is the foundation for the entire project.
+    - Every downstream SQL file depends on these tables existing.
+
+Dependencies
+    - Requires: None
+
+Output
+    - accounts
+    - subscriptions
+    - churn_events
+    - feature_usage_raw
+    - support_tickets
+
+Notes
+    - feature_usage_raw is intentionally a landing table.
+    - usage_id is not enforced as a primary key because the source data can contain duplicates.
+    - If this file is re-run, child tables should be dropped before parent tables.
 */
 
 CREATE SCHEMA IF NOT EXISTS ravenstack;

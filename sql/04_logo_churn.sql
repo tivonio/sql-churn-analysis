@@ -3,22 +3,25 @@
 
 PURPOSE:
     - Calculate customer churn based on the number of customers lost (logo churn).
-
-Definition (monthly)
-    - A customer is "paying" if mrr_amount > 0.
-    - churned_customer: prev_mrr > 0 AND current_mrr = 0
-    - new_customer: prev_mrr = 0 AND current_mrr > 0
+    - Count new customers, churned customers, customers at start, and customers at end.
+    
+Significance
+    - SQL 04 is the first churn definition.
+    - Logo churn answers, "Are we losing customers?"
+    - It does not capture revenue impact or engagement risk.
 
 Dependencies
     - Requires: v_account_mrr_month (03_account_mrr_month.sql)
     - Uses: subscriptions for month bounds and account scope
 
-Significance
-    - Logo churn answers, "Are we losing customers?"
-    - It does not capture revenue impact or engagement risk.
-
 Output
     - v_logo_churn_month
+
+Notes
+    - Definition (monthly)
+        - A customer is "paying" if mrr_amount > 0.
+        - churned_customer: prev_mrr > 0 AND current_mrr = 0
+        - new_customer: prev_mrr = 0 AND current_mrr > 0
 */
 
 SET search_path = ravenstack;

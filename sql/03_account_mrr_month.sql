@@ -4,26 +4,30 @@
 PURPOSE:
     - Create a month-end snapshot of each account's subscription status.
     - Produce output of one row per (account_id, month_start).
-    - This is the base table for churn, retention, and revenue movement, and tier mix.
-
-Key modeling decision (EOM snapshot)
-    - A subscription is considered active for a month only if it is active *as of the
-      final day of that month* (month_end).
-    - If an account has overlapping subscriptions at month-end, select the subscription
-      with the latest start_date; break ties by higher mrr_amount, then subscription_id.
 
 Significance
+    - SQL 03 is the core modeling layer for the project.
+    - This is the base table for churn, retention, and revenue movement, and tier mix.
     - Stakeholders and Finance typically interpret "last month" as a month-close state.
     - Using EOM avoids timing drift where mid-month cancellations still appear as "active"
       in that month under an "active-anytime" rule.
 
 Dependencies
     - Requires: subscriptions (and a month generator).
+        (00_create_tables.sql, 01_load_data.sql)
     - Assumes: end_date NULL mean "still active".
     - Assumes: end_date is inclusive (active through end_date)
 
 Output
     - v_account_mrr_month
+
+Notes
+    - Key modeling decision (EOM snapshot)
+        - A subscription is considered active for a month only if it is active *as of the
+            final day of that month* (month_end).
+        - If an account has overlapping subscriptions at month-end, select the subscription
+            with the latest start_date; break ties by higher mrr_amount, then subscription_id.
+        - This prevents double counting and makes month-over-month comparisons stable.
 */
 SET search_path = ravenstack;
 
@@ -78,7 +82,7 @@ SELECT
 FROM ranked
 WHERE rn = 1;
 
--- Optional: preview (uncomment)
+-- Check
 SELECT *
 FROM v_account_mrr_month
 ORDER BY month_start, account_id

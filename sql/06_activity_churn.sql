@@ -2,27 +2,33 @@
 06_activity_churn.sql
 
 PURPOSE:
+    - Build an activity-based churn view using product usage at the account-month level.
     - Identify which paying customers are at risk of disengaging
       based on trends and patterns in their product usage.
 
-Definition
-    - active: total_usage_count > 0 in a month
-    - inactive_but_paying: mrr_amount > 0 AND total_usage_count = 0
-
-Activity churn (monthly)
-    - activity_churned_account:
-      was paying AND was active last month,
-      is paying AND is inactive this month
-
 Significance
-    - Revenue can look stable while usage declines.
+    - SQL 06 is the third churn definition in the project.
+    - It tests whether the customer base is still engaged, as revenue can look stable while usage declines.
     - Activity churn is a leading indicator of future churn.
 
 Dependencies
-    - Requires: feature_usage_raw, subscriptions, and v_account_mrr_month (03_account_mrr_month.sql).
+    - Requires:
+        - feature_usage_raw (00_create_tables.sql, 01_load_data.sql)
+        - subscriptions (00_create_tables.sql, 01_load_data.sql)
+        - v_account_mrr_month (03_account_mrr_month.sql).
 
 Output
     - v_activity_churn_month
+
+Notes
+    - Usage is first mapped from subscription_id to account_id.
+    - Definition:
+        - active: total_usage_count > 0 in a month
+        - inactive_but_paying: mrr_amount > 0 AND total_usage_count = 0
+        - activity_churned_account:
+            - active and paying last month
+            - still paying this month
+            - inactive tis month
 */
 
 SET search_path = ravenstack;

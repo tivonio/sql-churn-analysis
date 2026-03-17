@@ -8,8 +8,22 @@ PURPOSE:
     - Catch common data issues such as NULLS.
     - Detect join risks (orphan rows).
 
+Significance
+    - SQL 02 is the first trust check
+    - It catches any obvious dat issues before any analytical views are built.
+    - This file helps confirm that SQL 00-01 completed correctly.
+
 Dependencies
-    - Requires: 00_create_tables.sql and 01_load_data.sql
+    - Requires:
+        - accounts, subscriptions, churn_events, feature_usage_raw, support_tickets
+          (00_create_tables.sql, 01_load_data.sql)
+
+Output
+    - Validation query outputs only
+
+Notes
+    - This file is for profiling, not transformation.
+    - If any basic integrity checks fail here, stop and debug before moving on.
 */
 
 SET search_path = ravenstack;

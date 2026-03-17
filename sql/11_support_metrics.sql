@@ -2,20 +2,22 @@
 11_support_metrics.sql
 
 PURPOSE:
-    -Create account-month support metrics that can be aligned to churn timing.
+    - Build analysis-ready support metrics at the account-month grain.
 
 Significance
+    - SQL 11 converts raw support tickets into account-month support burden metrics
+        that can be aligned to churn timing.
     - Explains churn risk by testing signals that appear before churn.
     - Support burden is a common leading indicator and is easy to quantify.
 
 Dependencies
-    - Requires: support_tickets
+    - Requires: support_tickets (00_create_tables.sql, 01_load_data.sql)
         Key columns used:
             - submitted_at
             - closed_at
             - resolution_time_hours
             - priority
-            -escalation_flag
+            - escalation_flag
 
 Output
     - v_support_account_month (one row per account per month)
@@ -23,7 +25,7 @@ Output
 Notes
     - tickets_closed = closed_at IS NOT NULL.
     - avg_resolution_hours uses resolution_time_hours.
-    - high_priority_tickets counts priority in ('high', 'urgent')
+    - high_priority_tickets counts priority in ('high', 'urgent', 'p1)
 */
 
 SET search_path = ravenstack;

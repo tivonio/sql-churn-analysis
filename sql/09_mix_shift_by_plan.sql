@@ -2,18 +2,28 @@
 09_mix_shift_by_plan.sql
 
 PURPOSE:
-    - Break down customers and MRR by plan_tier over time.
-    - Show how a shift toward higher-value tiers can boost
-        revenue even as the total customer count declines.
+    - Summarize paying accounts and MRR by plan_tier over time.
+    - Show how revenue composition changes across Basic, Pro, and Enterprise.
+
 Significance
+    - SQL 09 shows how MRR is distributed across Basic, Pro, and Enterprise
+        at the month-end snapshot grain.
+    - It makes mix shift visible by separating changes in customer count from
+        changes in revenue contribution by tier.
     - Total MRR can rise even if a segment shrinks, if customers migrate
         to higher tiers or the business acquires more high_value customers.
 
 Dependencies
-    - Requires: v_account_mrr_month
+    - Requires:
+        - v_account_mrr_month (03_account_mrr_month.sql)
 
 Output
     - v_mix_shift_by_plan_month
+
+Notes
+    - This view is used to compare plan-tier counts, total MRR, and average MRR
+        per account over time.
+    - It is most useful when read alongside the churn scoreboard and MRR waterfall.
 */
 
 SET search_path = ravenstack;

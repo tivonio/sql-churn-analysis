@@ -2,10 +2,28 @@
 01_load_data.sql
 
 PURPOSE:
-    - Load the raw CSV files into the tables created in 00_create_tables.sql.
-    - Keep the load process simple and reproducible.
+    - Load the raw CSV files into the tables created in SQL 00.
+    - Populate the database so the analysis views can be built.
 
-NOTE:
+Significance
+    - SQL 01 turns the emptry schema into a reproducible working dataset.
+    - All analysis from SQL 02 onward assumes these tables are populated.
+
+Dependencies
+    - Requires:
+        - accounts, subscriptions, churn_events, feature_usage_raw, support_tickets
+            (00_create_tables.sql)
+        - The Ravenstack CSV files in data/raw/
+
+Output
+    - Loaded rows in:
+        - accounts
+        - subscriptions
+        - churn_events
+        - feature_usage_raw
+        - support_tickets
+
+Notes
     - This script uses server-side COPY.
       This means the CSV path must be visible to the Postgres server (the container),
       not the host PC. In Docker, this this typically works by mounting the local
@@ -15,10 +33,7 @@ NOTE:
       and point to a host file path (because \copy reads files from the client machine,
       not the server/container).
 
-Dependencies
-    - Requires: 00_create_tables.sql
-
-RERUN SAFETY:
+RERUN SAFETY
     - If you rerun COPY without truncating, you can duplicate rows in tables without PKs.
     - In this schema, feature_usage_raw is particularly vulnerable to duplicateion as it
       has no natural unique key.

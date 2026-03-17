@@ -3,18 +3,12 @@
 
 PURPOSE:
     - Calculate the drivers of revenue change (MRR waterfall) along with key retention metrics.
+    - Break down monthly MRR movement into starting, new, expansion, contraction, and ending MRR.
+    - Compute gross revenue churn rate and NRR.
 
-Components (monthly)
-    - starting_mrr: sum of prev_mrr for paying customers (prev_mrr > 0)
-    - new_mrr: MRR from accounts that were not paying last month and are paying now
-    - expansion_mrr: increases in MRR among continuing customers
-    - contraction_mrr: decreases in MRR among continuing customers
-    - churned_mrr: lost MRR from customers that stopped paying (prev_mrr > 0 AND mrr_amount = 0)
-    - ending_mrr: sum of current MRR for paying customers (mrr_amount > 0)
-
-Metrics
-    - gross_revenue_churn_rate = (contraction_mrr + churned_mrr) / starting_mrr
-    - net_revenue_retention (NRR) = (starting + expansion - contraction -churn) / starting
+Significance
+    - SQL 05 is the revenue lens.
+    - This is the Finance side to answering the stakeholder question.
 
 Dependencies
 
@@ -22,8 +16,20 @@ Dependencies
 
 Output
     - v_revenue_waterfall_month
-*/
 
+Notes
+    - Metrics
+        - gross_revenue_churn_rate = (contraction_mrr + churned_mrr) / starting_mrr
+        - net_revenue_retention (NRR) = (starting + expansion - contraction -churn) / starting
+
+    - Components (monthly)
+        - starting_mrr: sum of prev_mrr for paying customers (prev_mrr > 0)
+        - new_mrr: MRR from accounts that were not paying last month and are paying now
+        - expansion_mrr: increases in MRR among continuing customers
+        - contraction_mrr: decreases in MRR among continuing customers
+        - churned_mrr: lost MRR from customers that stopped paying (prev_mrr > 0 AND mrr_amount = 0)
+        - ending_mrr: sum of current MRR for paying customers (mrr_amount > 0)
+*/
 
 SET search_path = ravenstack;
 

@@ -5,17 +5,25 @@ PURPOSE:
     - Combine the three churn views into one monthly scoreboard:
         1) Logo churn (customer loss)
         2) revenue movement + retention (Finance view)
-        3) actvitiy churn (product performance indicator)
+        3) activity churn (product performance indicator)
 
 Significance
-    - Stakeholders often disagree because they rely on different definitions of churn.
+    - SQL 07 is the main deliverable.
+    - It reconciles the three definitions of churn in one place.
     - Showing the definitions side by side helps ground the conversation in specifics.
 
 Dependencies
-    - Requires: v_logo_churn_month, v_revenue_waterfall_month, and v_activity_churn_month
+    - Requires:
+        - v_logo_churn_month (04_logo_churn.sql)
+        - v_revenue_waterfall_month (05_revenue_waterfall.sql)
+        - v_activity_churn_month (06_activity_churn.sql)
 
 Output
     - v_churn_scoreboard_month
+
+Notes
+    - This view is designed for interpretation and communication.
+    - It is the source for the main table and Python visuals in SQL 10 & notebook 01.
 */
 
 SET search_path = ravenstack;

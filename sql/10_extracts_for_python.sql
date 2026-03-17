@@ -2,8 +2,29 @@
 10_extracts_for_python.sql
 
 PURPOSE:
-    - Plot-ready extracts for Python.
-    - SQL remains the baseline. Python only visualizes outputs.
+    - Create plot-ready extracts for Python.
+    - Keep SQL as the baseline and use Python only visualizes outputs.
+
+Significance
+    - SQL 10 bridges the SQL analysis to the notebook used for visuals.
+    - It keeps the plotting layer clean and reproducible.
+    - The SQL views remain the source of truth.
+
+Dependencies
+    - Requires:
+        - v_churn_scoreboard_month (07_scoreboard.sql)
+        - v_revenue_waterfall_month (05_revenue_waterfall.sql)
+        - v_mix_shift_by_plan_month (09_mix_shift_by_plan.sql)
+
+Output
+    - Query results for:
+        - scoreboard trends
+        - MRR waterfall inputs
+        - mix shift by plan tier
+
+Notes
+    - This file does not create persistent views.
+    - It is designed to be consumed by notebook 01_visual.ipynb.
 */
 
 -- Visual 1: Socreboard trends
