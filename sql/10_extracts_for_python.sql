@@ -3,7 +3,7 @@
 
 PURPOSE:
     - Create plot-ready extracts for Python.
-    - Keep SQL as the baseline and use Python only visualizes outputs.
+    - Keep SQL as the baseline and use Python only to visualize outputs.
 
 Significance
     - SQL 10 bridges the SQL analysis to the notebook used for visuals.
@@ -27,7 +27,7 @@ Notes
     - It is designed to be consumed by notebook 01_visual.ipynb.
 */
 
--- Visual 1: Socreboard trends
+-- Visual 1: Scoreboard trends
 SELECT
     month_start,
     logo_churn_rate,
