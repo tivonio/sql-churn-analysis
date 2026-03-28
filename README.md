@@ -124,7 +124,7 @@ Run these in order:
     `v_reason_code_by_tier` (recorded churn reasons summarized by plan tier).
 
 20. `19_extracts_for_python.sql`  
-    Plot-ready extracts for Post #3 visuals.
+    Plot-ready extracts for Part 2 visuals.
 
 ### `notebooks/`
 1. `01_visuals.ipynb`  
