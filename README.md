@@ -2,9 +2,9 @@
 
 This repo contains the complete SQL walkthrough for the blog post churn series (published on tivon.io):
 
-1) ["We Lost Customers, But Not Revenue (Three churn definitions in SQL)"](https://tivon.io/2026/02/11/we-lost-customers-but-not-revenue/)
+1) ["We Lost Customers, But Not Revenue: Measuring Churn Three Ways in SQL"](https://tivon.io/2026/02/11/we-lost-customers-but-not-revenue-measuring-churn-three-ways-in-sql/)
    - churn definitions + scoreboard (SQL 00-10, notebook 01)
-2) ["Why Are We Losing Customers (Linking support tickets and product usage to churn risk)"](https://tivon.io/2026/03/28/why-are-we-losing-customers/)
+2) ["How I Used SQL to Find Early Churn Warning Signs"](https://tivon.io/2026/03/28/how-i-used-sql-to-find-early-churn-warning-signs/)
    - pre-churn signals + tier-level churn + reason codes by tier (SQL 11-19, notebook 02)
 
 It uses a public SaaS-style dataset (Ravenstack) to walk through a practical churn workflow:
